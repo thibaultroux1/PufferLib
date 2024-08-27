@@ -133,3 +133,8 @@ dmypy.json
 
 # ROMs
 *.gb
+
+# Wandb
+wandb/
+experiments/
+checkpoints/
