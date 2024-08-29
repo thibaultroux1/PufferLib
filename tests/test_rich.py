@@ -24,10 +24,10 @@ ROUND_OPEN = rich.box.Box(
     "╰──╯\n"
 )
 
-c1 = '[bright_cyan]'
+c1 = '[orange1]'
 c2 = '[white]'
 c3 = '[cyan]'
-b1 = '[bright_cyan]'
+b1 = '[orange1]'
 b2 = '[bright_white]'
 
 def abbreviate(num):
@@ -115,7 +115,7 @@ def print_dashboard(performance_data, loss_data, user_data, min_interval=0.25, l
         u.add_row(f'{c2}{metric}', f'{b2}{value}')
         i += 1
 
-    table = Table(box=ROUND_OPEN, expand=True, show_header=False, width=80, border_style='bright_cyan')
+    table = Table(box=ROUND_OPEN, expand=True, show_header=False, width=80, border_style='orange1')
     table.add_row(util)
     table.add_row(monitor)
     table.add_row(user)
@@ -230,7 +230,7 @@ class Dashboard:
         table = Table(box=None, expand=True)
         #self.layout["losses"].update(table)
         table.add_column("[bold magenta]Losses", justify="right", ratio=1.0)
-        table.add_column("Value", justify="left", style="bright_cyan", ratio=1.0)
+        table.add_column("Value", justify="left", style="orange1", ratio=1.0)
         for metric, value in data.items():
             table.add_row(metric, str(value))
 

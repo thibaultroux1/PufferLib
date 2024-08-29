@@ -299,7 +299,9 @@ def train(args, make_env, policy_cls, rnn_cls, wandb, eval_frac=0.1, elos={'mode
     train_config = pufferlib.namespace(**args['train'], env=env_name,
         exp_id=args['exp_id'] or env_name + '-' + str(uuid.uuid4())[:8])
     data = clean_pufferl.create(train_config, vecenv, policy, wandb=wandb)
+    data.stats['crash_cumul'] = 0
     while data.global_step < train_config.total_timesteps:
+
         clean_pufferl.evaluate(data)
         clean_pufferl.train(data)
 
