@@ -13,7 +13,7 @@ ALIASES = {
 def env_creator(name='minigrid'):
     return functools.partial(make, name=name)
 
-def make(name, reward_crash= -10, render_mode=None):
+def make(name, reward_crash=-10, render_mode=None):
     if name in ALIASES:
         name = ALIASES[name]
     _ = pufferlib.environments.try_import('phd.env')

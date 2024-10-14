@@ -277,8 +277,8 @@ def train(data):
         explained_var = np.nan if var_y == 0 else 1 - np.var(y_true - y_pred) / var_y
         losses.explained_variance = explained_var
         data.epoch += 1
-        crash_cumul = data.stats['crash_cumul'] + np.sum(data.stats.get('crash', 0))
-        data.stats['crash_cumul'] = crash_cumul
+        # crash_cumul = data.stats['crash_cumul'] + np.sum(data.stats.get('crash', 0))
+        # data.stats['crash_cumul'] = crash_cumul
 
         done_training = data.global_step >= config.total_timesteps
         # TODO: beter way to get episode return update without clogging dashboard
@@ -288,7 +288,7 @@ def train(data):
             print_dashboard(config.env, data.utilization, data.global_step, data.epoch,
                 profile, data.losses, data.stats, data.msg)
             data.stats = defaultdict(list)
-            data.stats['crash_cumul'] = crash_cumul
+            # data.stats['crash_cumul'] = crash_cumul
 
         if data.epoch % config.checkpoint_interval == 0 or done_training:
             save_checkpoint(data)
